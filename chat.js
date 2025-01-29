@@ -116,7 +116,7 @@ function loginUser(username, password) {
       const result = loginUser(username, password);
       if (result.success) {
         alert(result.message);
-        window.location.href = "dashboard.html"; // Arahkan ke halaman dashboard
+        window.location.href = "Dashboard.html"; // Arahkan ke halaman dashboard
       } else {
         errorMessage.textContent = result.message;
       }
