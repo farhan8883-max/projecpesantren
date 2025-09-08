@@ -1,131 +1,420 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Registrasi Daarulhikam</title>
-    <link rel="stylesheet" href="registrasi.css">
-    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrasi Daarulhikam</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    /* Reset */
+    /* * { box-sizing: border-box; } */
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f8f4;
+      color: #333;
+    }
+
+    h2 {
+      text-align: center;
+      padding: 20px 10px;
+      background: #081b29;
+      color: white;
+      margin: 0 0 20px 0;
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+      font-size: 22px;
+    }
+
+    form {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    fieldset {
+      margin-bottom: 25px;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #dcdcdc;
+      background: #fafafa;
+    }
+
+    legend {
+      font-weight: bold;
+      font-size: 15px;
+      padding: 0 8px;
+      color: #081b29;
+    }
+
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .form-row label {
+      flex: 1 1 200px;
+      min-width: 180px;
+      font-weight: 500;
+      margin-right: 10px;
+    }
+
+    .form-row input,
+    .form-row select {
+      flex: 2 1 300px;
+      padding: 8px 10px;
+      border: 1px solid #bbb;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .form-row input:focus,
+    .form-row select:focus {
+      border-color: #2e7d32;
+      outline: none;
+      box-shadow: 0 0 6px rgba(46, 125, 50, 0.3);
+    }
+
+    button {
+      display: block;
+      margin: 25px auto 10px;
+      padding: 12px 28px;
+      background: #081b29;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0e3049;
+      transform: scale(1.03);
+    }
+
+    .wa-btn {
+    display: block;
+    margin: 15px auto;
+    padding: 12px 28px;
+    background: #25d366;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: 0.2s;
+  }
+  .wa-btn:hover {
+    background: #1ebe5d;
+    transform: scale(1.03);
+  }
+  .btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* jarak antar tombol */
+    margin-top: 25px;
+  }
+
+  .btn-group button {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.2s;
+  }
+
+  .btn-group button:first-child {
+    background: #081b29;
+    color: white;
+  }
+
+  .btn-group button:first-child:hover {
+    background: #0e3049;
+    transform: scale(1.03);
+  }
+
+  .btn-group .wa-btn {
+    background: #25d366;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  }
+
+  .btn-group .wa-btn:hover {
+    background: #1ebe5d;
+    transform: scale(1.03);
+  }
+  </style>
 </head>
 <body>
-    <footer>
-        <h4> Pendaftaran pondok Daarulhikam Batam <br> <time datetime="2023">2024</time></h4>
-    </footer>
-    <picture>
-        <img src="S9.png" alt="daarulhikam" style="width: 100%; height: auto">
-    </picture>
-    <H2>FORM REGISTRASI PONPES DAARULHIKAM</H2>
-    <form action="receive.html" method="post" enctype="multipart/form-data">
-        <fieldset>
-            <legend>Data Calon Santri</legend>
-            <p>Nama Calon Santri : <input type="text" placeholder="Nama Calon Siswa"></p>
-            <p>Tempat Lahir : <input type="text" placeholder="Tempat Lahir"></p>
-            <p>Jenis Kelamin : <input type="radio" name="jenis_kelamin">Laki-Laki
-            <input type="radio" name="Jenis_Kelamin">Perempuan
-        </p>
-        <p>Alamat : <input type="text" placeholder="Alamat anda"></p>
-        <p>Tanggal Lahir : <input type="text" placeholder="date"></p>
-        <p>NIK : <input type="text" placeholder="No. NIK"></p>
-        <P>NISN : <input type="text" placeholder="No. NISN Anda"></P>
-        <p>RT : <input type="text"placeholder="Contoh RT.01"></p>
-        <p>RW : <input type="text"placeholder="Contoh RW.02"></p>
-        <p>Nama Perum : <input type="text"placeholder="Perum Anda"></p>
-        <p>Nama Kelurahan : <input type="text"placeholder="Nama kelurahan Anda"></p>
-        <p>Nama kecamatan : <input type="text"placeholder="Kecamtan Anda"></p>
-        <p>No. Handphone : <input type="tel" placeholder="No. Handphone Anda"></p>
-        </fieldset>
-        <fieldset>
-            <legend>Data Ayah</legend>
-            <p>Nama Ayah : <input type="text" placeholder="Nama Ayah"></p>
-            <p>Tahun Lahir : <input type="text" placeholder="Contoh 1945"></p>
-            <p>Jenjang Pendidikan :
-                <select name="" id="">
-                    <option value="">SD</option>
-                    <option value="">SMP</option>
-                    <option value="">SMA</option>
-                    <option value="">S1</option>
-                    <option value="">S2</option>
-                    <option value="">S3</option>
-                </select>
-            </p>
-            <p>Pekerjaan : <input type="text"placeholder="Pekerjaan Ayah"></p>
-            <p>Penghasilan per-Bulan : 
-                <input type="radio" name="Penghasilan_ayah"> 3-5 juta</p>
-                <input type="radio" name="Penghasilan_ayah"> 5-10 juta</p>
-                <input type="radio" name="Penghasilan_ayah"> 10-15 juta</p>
-                <input type="radio" name="Penghasilan_ayah"> Diatas 15 juta</p>
-                <input type="radio" name="Penghasilan_ayah"> Dibawah 3 juta</p>
-        </fieldset>
-        <br> <br>
-        <fieldset>
-            <legend>Data Ibu</legend>
-            <p>Nama Ibu : <input type="text" placeholder="Nama Ibu"></p>
-            <p>Tahun Lahir : <input type="text" placeholder="Contoh 1945"></p>
-            <p>Jenjang Pendidikan :
-                <select name="" id="">
-                    <option value="">SD</option>
-                    <option value="">SMP</option>
-                    <option value="">SMA</option>
-                    <option value="">S1</option>
-                    <option value="">S2</option>
-                    <option value="">S3</option>
-                </select>
-            </p>
-            <p>Pekerjaan : <input type="text"placeholder="Pekerjaan Ibu"></p>
-            <p>Penghasilan per-Bulan : 
-                <input type="radio" name="Penghasilan_ibu"> 3-5 juta</p>
-                <input type="radio" name="Penghasilan_ibu"> 5-10 juta</p>
-                <input type="radio" name="Penghasilan_ibu"> 10-15 juta</p>
-                <input type="radio" name="Penghasilan_ibu"> Diatas 15 juta</p>
-                <input type="radio" name="Penghasilan_ibu"> Dibawah 3 juta</p>
-        </fieldset>
-        <br> <br>
-        <fieldset>
-            <legend>Data wali</legend>
-            <p>Nama wali : <input type="text" placeholder="Nama Wali"></p>
-            <p>Tahun Lahir : <input type="text" placeholder="Contoh 1945"></p>
-            <p>Jenjang Pendidikan :
-                <select name="" id="">
-                    <option value="">SD</option>
-                    <option value="">SMP</option>
-                    <option value="">SMA</option>
-                    <option value="">S1</option>
-                    <option value="">S2</option>
-                    <option value="">S3</option>
-                </select>
-            </p>
-            <p>Pekerjaan : <input type="text"placeholder="Pekerjaan Wali"></p>
-            <p>Penghasilan per-Bulan : 
-                <input type="radio" name="Penghasilan_Wali"> 3-5 juta</p>
-                <input type="radio" name="Penghasilan_Wali"> 5-10 juta</p>
-                <input type="radio" name="Penghasilan_Wali"> 10-15 juta</p>
-                <input type="radio" name="Penghasilan_Wali"> Diatas 15 juta</p>
-                <input type="radio" name="Penghasilan_Wali"> Dibawah 3 juta</p>
-        </fieldset>
-        <p>Pilih Jurusan : 
-            <select name="" id="">
-                <option value="">Progaming(Kodingan)</option>
-                <option value="">Kitab Kuning</option>
-                <option value="">Dvisual(Desain visual)</option>
-            </select>
-        </p>
-        <details>
-            <summary>Pernyataan</summary>
-            <p><input type="checkbox">Saya menyatakan dengan sesungguhnya bahwa isian data formulir ini adalah benar.
-                 apabila ternyata data tersebut tidak benar/palsu,makasa saya bersedia 
-                 menerima sanksi berupa pembatalan sebagai calon peserta didik.</p>
-        </details>
-        <br>
-        <label for="Data lainnya">Data : </label>
-        <input type="file" name="Data" id="profile">
-        <input type="submit" value="Kirim data" onclick="alert ('Sudah Terkirim')" href="index.scss">
-    </form>
-    <br><br><br>
-    <nav class="navbar1">
-        <ul>
-          <li><a href="Dashboard.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: msFilter"><path d="m21.743 12.331-9-10c-.379-.422-1.107-.422-1.486 0l-9 10a.998.998 0 0 0-.17 1.076c.16.361.518.593.913.593h2v7a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-4h4v4a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-7h2a.998.998 0 0 0 .743-1.669z"></path></svg></a></li>
-        </ul>
-    </nav>
+  <h2>FORM REGISTRASI PONPES DAARULHIKAM</h2>
+  <form id="formSantri">
+    
+    <!-- Data Calon Santri -->
+    <fieldset>
+      <legend>Data Calon Santri</legend>
+      <div class="form-row"><label>Nama Santri:</label><input type="text" id="namaSantri" aria-label="Pilih paket tahunan atau bulanan"></div>
+      <div class="form-row"><label>Tempat Lahir:</label><input type="text" id="tempatLahir" aria-label="Pilih paket tahunan atau bulanan"></div>
+      <div class="form-row"><label>Tanggal Lahir:</label><input type="text" id="tglLahir" aria-label="Pilih paket tahunan atau bulanan"></div>
+      <div class="form-row">
+        <label>Jenis Kelamin:</label>
+        <select id="jkSantri" aria-label="Pilih paket tahunan atau bulanan">
+          <option value="">--Pilih--</option>
+          <option>Laki-laki</option>
+          <option>Perempuan</option>
+        </select>
+      </div>
+      <div class="form-row"><label>NIK:</label><input type="text" id="nikSantri" aria-label="Pilih paket tahunan atau bulanan"></div>
+      <div class="form-row"><label>NISN:</label><input type="text" id="nisnSantri" aria-label="Pilih paket tahunan atau bulanan"></div>
+      <div class="form-row"><label>Alamat:</label><input type="text" id="alamatSantri" aria-label="Pilih paket tahunan atau bulanan"></div>
+      <div class="form-row"><label>RT:</label><input type="text" id="rtSantri" aria-label="Pilih paket tahunan atau bulanan"></div>
+      <div class="form-row"><label>RW:</label><input type="text" id="rwSantri" aria-label="Pilih paket tahunan atau bulanan"></div>
+      <div class="form-row"><label>Nama Perumahan:</label><input type="text" id="perumSantri" aria-label="Pilih paket tahunan atau bulanan"></div>
+      <div class="form-row"><label>Nama Kelurahan:</label><input type="text" id="kelSantri" aria-label="Pilih paket tahunan atau bulanan"></div>
+      <div class="form-row"><label>Nama Kecamatan:</label><input type="text" id="kecSantri" aria-label="Pilih paket tahunan atau bulanan"></div>
+      <div class="form-row"><label>No Handphone:</label><input type="text" id="hpSantri" aria-label="Pilih paket tahunan atau bulanan"></div>
+    </fieldset>
+
+    <!-- Data Ayah -->
+    <fieldset>
+      <legend>Data Ayah</legend>
+      <div class="form-row"><label>Nama Ayah:</label><input type="text" id="namaAyah" aria-label="Pilih paket tahunan atau bulanan"></div>
+      <div class="form-row"><label>Tahun Lahir:</label><input type="text" id="tahunAyah" aria-label="Pilih paket tahunan atau bulanan"></div>
+      <div class="form-row">
+        <label>Pendidikan:</label>
+        <select id="pendidikanAyah" aria-label="Pilih paket tahunan atau bulanan">
+          <option value="">--Pilih--</option><option>SD</option><option>SMP</option><option>SMA</option><option>S1</option><option>S2</option><option>S3</option>
+        </select>
+      </div>
+      <div class="form-row"><label>Pekerjaan:</label><input type="text" id="pekerjaanAyah" aria-label="Pilih paket tahunan atau bulanan"></div>
+      <div class="form-row">
+        <label>Penghasilan:</label>
+        <select id="penghasilanAyah" aria-label="Pilih paket tahunan atau bulanan">
+          <option value="">--Pilih--</option>
+          <option>Dibawah 3 juta</option><option>3-5 juta</option><option>5-10 juta</option><option>10-15 juta</option><option>Diatas 15 juta</option>
+        </select>
+      </div>
+      <div class="form-row"><label>No Handphone Ayah:</label><input type="text" id="hpAyah" aria-label="Pilih paket tahunan atau bulanan"></div>
+    </fieldset>
+
+    <!-- Data Ibu -->
+    <fieldset>
+      <legend>Data Ibu</legend>
+      <div class="form-row"><label>Nama Ibu:</label><input type="text" id="namaIbu" aria-label="Pilih paket tahunan atau bulanan"></div>
+      <div class="form-row"><label>Tahun Lahir:</label><input type="text" id="tahunIbu" aria-label="Pilih paket tahunan atau bulanan"></div>
+      <div class="form-row">
+        <label>Pendidikan:</label>
+        <select id="pendidikanIbu" aria-label="Pilih paket tahunan atau bulanan">
+          <option value="">--Pilih--</option><option>SD</option><option>SMP</option><option>SMA</option><option>S1</option><option>S2</option><option>S3</option>
+        </select>
+      </div>
+      <div class="form-row"><label>Pekerjaan:</label><input type="text" id="pekerjaanIbu" aria-label="Pilih paket tahunan atau bulanan"></div>
+      <div class="form-row">
+        <label>Penghasilan:</label>
+        <select id="penghasilanIbu" aria-label="Pilih paket tahunan atau bulanan">
+          <option value="">--Pilih--</option>
+          <option>Dibawah 3 juta</option><option>3-5 juta</option><option>5-10 juta</option><option>10-15 juta</option><option>Diatas 15 juta</option>
+        </select>
+      </div>
+      <div class="form-row"><label>No Handphone Ibu:</label><input type="text" id="hpIbu" aria-label="Pilih paket tahunan atau bulanan" aria-label="Pilih paket tahunan atau bulanan"></div>
+    </fieldset>
+
+    <!-- Data Wali -->
+    <fieldset>
+      <legend>Data Wali</legend>
+      <div class="form-row"><label>Nama Wali:</label><input type="text" id="namaWali" aria-label="Pilih paket tahunan atau bulanan"></div>
+      <div class="form-row"><label>Tahun Lahir:</label><input type="text" id="tahunWali" aria-label="Pilih paket tahunan atau bulanan"></div>
+      <div class="form-row">
+        <label>Pendidikan:</label>
+        <select id="pendidikanWali" aria-label="Pilih paket tahunan atau bulanan">
+          <option value="">--Pilih--</option><option>SD</option><option>SMP</option><option>SMA</option><option>S1</option><option>S2</option><option>S3</option>
+        </select>
+      </div>
+      <div class="form-row"><label>Pekerjaan:</label><input type="text" id="pekerjaanWali" aria-label="Pilih paket tahunan atau bulanan"></div>
+      <div class="form-row">
+        <label>Penghasilan:</label>
+        <select id="penghasilanWali" aria-label="Pilih paket tahunan atau bulanan">
+          <option value="">--Pilih--</option>
+          <option>Dibawah 3 juta</option><option>3-5 juta</option><option>5-10 juta</option><option>10-15 juta</option><option>Diatas 15 juta</option>
+        </select>
+      </div>
+    </fieldset>
+
+    <!-- Jurusan -->
+    <fieldset>
+      <legend>Pilihan Jurusan</legend>
+      <div class="form-row">
+        <label>Jurusan:</label>
+        <select id="jurusan" aria-label="Pilih paket tahunan atau bulanan">
+          <option value="">--Pilih--</option>
+          <option>Programming</option>
+          <option>Kitab Kuning</option>
+          <option>Desain Visual</option>
+        </select>
+      </div>
+    </fieldset>
+    <p>Ketika sudah mengisi data Click tombol Export ke PDF dan download,click tombol wa dan kirim file tersebut</p>
+    <div class="btn-group">
+  <button type="button" onclick="generatePDF()">Export ke PDF</button>
+  <button type="button" class="wa-btn" onclick="goToWA()">Chat via WhatsApp</button>
+</div>
+  </form>
+
+  <script>
+    function validateForm() {
+      const requiredFields = document.querySelectorAll("#formSantri input, #formSantri select");
+      for (let field of requiredFields) {
+        if (field.type !== "button" && field.value.trim() === "") {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    async function generatePDF() {
+      if (!validateForm()) {
+        alert("⚠️ Harap isi semua data sebelum export ke PDF!");
+        return;
+      }
+
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      const logo = new Image();
+      logo.src = "logo.png";
+
+      logo.onload = function () {
+        doc.addImage(logo, "PNG", 15, 10, 25, 25);
+
+        // Header
+        doc.setFontSize(16);
+        doc.setFont("helvetica", "bold");
+        doc.text("PONDOK PESANTREN NURUL HUDA", 45, 20);
+
+        doc.setFontSize(12);
+        doc.setFont("helvetica", "normal");
+        doc.text("Jl. Pesantren No. 123, Kota Contoh, Indonesia", 45, 27);
+        doc.text("Telp: (021) 1234567 | Email: info@nurulhuda.sch.id", 45, 33);
+
+        doc.setLineWidth(0.7);
+        doc.line(15, 38, 195, 38);
+
+        doc.setFontSize(16);
+        doc.setFont("helvetica", "bold");
+        doc.text("Formulir Pendaftaran Santri Baru", 60, 48);
+
+        let y = 65;
+
+        // Fungsi Section & Field
+        function addSection(title) {
+          if (y > 240) { doc.addPage(); y = 30; }
+          doc.setFontSize(14);
+          doc.setFont("helvetica", "bold");
+          doc.text(title, 20, y);
+          y += 10;
+        }
+
+        function addField(label, value) {
+          if (y > 240) { doc.addPage(); y = 30; }
+          doc.setFontSize(12);
+          doc.setFont("helvetica", "normal");
+
+          let labelX = 25;
+          let colonX = 85;
+          let valueX = 90;
+
+          doc.text(label, labelX, y);
+          doc.text(":", colonX, y);
+
+          let textLines = doc.splitTextToSize(value, 100);
+          doc.text(textLines, valueX, y);
+
+          y += (textLines.length * 7);
+        }
+
+        // === CETAK DATA ===
+        addSection("Data Calon Santri");
+        addField("Nama", document.getElementById("namaSantri").value);
+        addField("Tempat Lahir", document.getElementById("tempatLahir").value);
+        addField("Tanggal Lahir", document.getElementById("tglLahir").value);
+        addField("Jenis Kelamin", document.getElementById("jkSantri").value);
+        addField("NIK", document.getElementById("nikSantri").value);
+        addField("NISN", document.getElementById("nisnSantri").value);
+        addField("Alamat", document.getElementById("alamatSantri").value);
+        addField("RT", document.getElementById("rtSantri").value);
+        addField("RW", document.getElementById("rwSantri").value);
+        addField("Perumahan", document.getElementById("perumSantri").value);
+        addField("Kelurahan", document.getElementById("kelSantri").value);
+        addField("Kecamatan", document.getElementById("kecSantri").value);
+        addField("No Handphone", document.getElementById("hpSantri").value);
+
+        addSection("Data Ayah");
+        addField("Nama", document.getElementById("namaAyah").value);
+        addField("Tahun Lahir", document.getElementById("tahunAyah").value);
+        addField("Pendidikan", document.getElementById("pendidikanAyah").value);
+        addField("Pekerjaan", document.getElementById("pekerjaanAyah").value);
+        addField("Penghasilan", document.getElementById("penghasilanAyah").value);
+        addField("No Handphone Ayah", document.getElementById("hpAyah").value);
+
+        addSection("Data Ibu");
+        addField("Nama", document.getElementById("namaIbu").value);
+        addField("Tahun Lahir", document.getElementById("tahunIbu").value);
+        addField("Pendidikan", document.getElementById("pendidikanIbu").value);
+        addField("Pekerjaan", document.getElementById("pekerjaanIbu").value);
+        addField("Penghasilan", document.getElementById("penghasilanIbu").value);
+        addField("No Handphone Ibu", document.getElementById("hpIbu").value);
+
+        addSection("Data Wali");
+        addField("Nama", document.getElementById("namaWali").value);
+        addField("Tahun Lahir", document.getElementById("tahunWali").value);
+        addField("Pendidikan", document.getElementById("pendidikanWali").value);
+        addField("Pekerjaan", document.getElementById("pekerjaanWali").value);
+        addField("Penghasilan", document.getElementById("penghasilanWali").value);
+
+        addSection("Pilihan Jurusan");
+        addField("Jurusan", document.getElementById("jurusan").value);
+
+        // FOTO + TANDA TANGAN
+        if (y < 180) { y = 180; }
+
+        let fotoX = 150;
+        let fotoY = y;
+        doc.setLineWidth(0.5);
+        doc.rect(fotoX, fotoY, 30, 40);
+        doc.setFontSize(10);
+        doc.text("Tempel Foto 3x4", fotoX + 5, fotoY + 20, { angle: 90 });
+
+        let tandaY = fotoY + 50;
+        doc.setFontSize(12);
+        doc.text("Orang Tua / Wali Santri", 25, tandaY);
+        doc.text("Kepala Madrasah", 130, tandaY);
+
+        tandaY += 35;
+        doc.text("(___________________)", 25, tandaY);
+        doc.text("(___________________)", 130, tandaY);
+
+        doc.save("pendaftaran-santri.pdf");
+      };
+    }
+     function goToWA() {
+    // Ganti nomor WA dengan nomor admin pondok (format internasional, tanpa + atau 0 di depan)
+    let nomor = "6282284596868";
+    let pesan = "Assalamu'alaikum,(Dari Website)";
+    
+    // Encode pesan biar aman di URL
+    let url = `https://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`;
+    
+    window.open(url, "_blank"); // buka di tab baru
+  }
+  </script>
 </body>
 </html>
