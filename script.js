@@ -30,4 +30,5 @@ body.append(h1)
 body.append(namaSaya)
 body.append(namaKamu)
 
-alert('Assalamualaikum sahabat (*/ω＼*)')
+
+// alert('Assalamualaikum sahabat (*/ω＼*)')
