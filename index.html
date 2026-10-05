@@ -285,54 +285,34 @@
        RESPONSIVE
        ===================================================== */
 
+    /* =====================================================
+       RESPONSIVE - TABLET & HP
+       ===================================================== */
+
     @media (max-width: 1000px) {
-
       .gal-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
       }
-
     }
 
-
     @media (max-width: 700px) {
-
+      /* GALERI: TETAP 3 GRID DI HP */
       .gal-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        width: 100%;
+      }
+
+      .gal-item {
+        min-height: 0;
+        border-radius: 12px;
       }
 
       .gal-item img {
-        height: 220px;
-      }
-
-      .visit-track {
-        height: 400px;
-      }
-
-      .visit-arrow {
-        position: absolute;
-
-        width: 42px;
-        height: 42px;
-        min-width: 42px;
-
-        z-index: 10;
-      }
-
-      .visit-arrow.prev {
-        left: 10px;
-      }
-
-      .visit-arrow.next {
-        right: 10px;
-      }
-
-    }
-
-
-    @media (max-width: 480px) {
-
-      .gal-grid {
-        grid-template-columns: 1fr;
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
       }
 
       .gal-buttons {
@@ -346,13 +326,381 @@
 
       .visit-gallery {
         padding: 30px 10px;
+        margin-top: 50px;
+      }
+
+      .visit-track {
+        height: 400px;
+      }
+
+      .visit-arrow {
+        position: absolute;
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        z-index: 10;
+      }
+
+      .visit-arrow.prev {
+        left: 10px;
+      }
+
+      .visit-arrow.next {
+        right: 10px;
+      }
+
+      /* Jika section keunggulan memakai .cards sebagai grid,
+         pertahankan 3 kolom di HP */
+      .cards {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .card {
+        min-width: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      /* JANGAN ubah menjadi 1 kolom: galeri tetap 3 grid */
+      .gal-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 6px;
+      }
+
+      .gal-item {
+        border-radius: 9px;
+      }
+
+      .gal-item img {
+        height: 110px;
+      }
+
+      .gal-buttons {
+        gap: 6px;
+        margin-bottom: 22px;
+      }
+
+      .gal-btn {
+        padding: 8px 11px;
+        font-size: 11px;
+      }
+
+      .visit-gallery {
+        padding: 25px 8px;
       }
 
       .visit-track {
         height: 300px;
       }
 
+      .cards {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 7px;
+      }
     }
+
+    /* Pengaman agar elemen tidak membuat layar HP melebar */
+    html,
+    body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img,
+    iframe,
+    video {
+      max-width: 100%;
+    }
+
+  
+/* =====================================================
+   YOUTUBE SECTION + MODAL
+   ===================================================== */
+
+.youtube-section {
+  padding: 80px 20px;
+  position: relative;
+}
+
+.youtube-heading {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.youtube-heading h3 {
+  font-size: clamp(28px, 4vw, 42px);
+  margin: 0 0 10px;
+}
+
+.youtube-heading p {
+  opacity: .78;
+  margin: 0 auto;
+  max-width: 650px;
+}
+
+.youtube-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.youtube-card {
+  overflow: hidden;
+  border-radius: 20px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 15px 35px rgba(0,0,0,.12);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.youtube-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(0,0,0,.2);
+}
+
+.youtube-thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #111;
+}
+
+.youtube-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .45s ease;
+}
+
+.youtube-card:hover .youtube-thumb img {
+  transform: scale(1.05);
+}
+
+
+/* Video di kartu diputar langsung di tempatnya */
+.youtube-card.youtube-open-video {
+  cursor: pointer;
+}
+
+.youtube-card.is-playing {
+  cursor: default;
+}
+
+.youtube-card.is-playing .youtube-thumb {
+  cursor: default;
+}
+
+.youtube-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 58px;
+  height: 42px;
+  border: 0;
+  border-radius: 12px;
+  background: #ff0000;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  box-shadow: 0 8px 25px rgba(0,0,0,.35);
+  pointer-events: none;
+}
+
+.youtube-card-body {
+  padding: 18px;
+}
+
+.youtube-card-body h4 {
+  margin: 0 0 7px;
+  font-size: 18px;
+}
+
+.youtube-card-body p {
+  margin: 0;
+  opacity: .72;
+  font-size: 14px;
+}
+
+.youtube-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.youtube-more-btn {
+  border: 0;
+  cursor: pointer;
+  padding: 13px 24px;
+  border-radius: 30px;
+  font: inherit;
+  font-weight: 700;
+  background: #ff0000;
+  color: #fff;
+  box-shadow: 0 10px 25px rgba(255,0,0,.2);
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+.youtube-more-btn:hover {
+  transform: translateY(-3px);
+  opacity: .9;
+}
+
+/* Modal */
+.youtube-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: none;
+  padding: 25px;
+  background: rgba(0,0,0,.82);
+  backdrop-filter: blur(8px);
+}
+
+.youtube-modal.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.youtube-modal-box {
+  position: relative;
+  width: min(1100px, 100%);
+  max-height: 92vh;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #101010;
+  box-shadow: 0 30px 80px rgba(0,0,0,.5);
+}
+
+.youtube-modal-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 18px 22px;
+  background: #151515;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.youtube-modal-header h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 20px;
+}
+
+.youtube-close {
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #fff;
+  background: rgba(255,255,255,.1);
+  font-size: 25px;
+  line-height: 1;
+}
+
+.youtube-close:hover {
+  background: #ff0000;
+}
+
+.youtube-modal-scroll {
+  max-height: calc(92vh - 80px);
+  overflow-y: auto;
+  padding: 22px;
+  overscroll-behavior: contain;
+}
+
+.youtube-modal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.youtube-modal-item {
+  border-radius: 18px;
+  overflow: hidden;
+  background: #181818;
+}
+
+.youtube-modal-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.youtube-modal-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.youtube-modal-info {
+  padding: 15px 16px 18px;
+  color: #fff;
+}
+
+.youtube-modal-info h4 {
+  margin: 0 0 5px;
+  font-size: 17px;
+}
+
+.youtube-modal-info p {
+  margin: 0;
+  color: rgba(255,255,255,.65);
+  font-size: 13px;
+}
+
+body.youtube-modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 850px) {
+  .youtube-grid,
+  .youtube-modal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .youtube-modal {
+    padding: 10px;
+  }
+
+  .youtube-modal-box {
+    max-height: 96vh;
+    border-radius: 18px;
+  }
+
+  .youtube-modal-scroll {
+    max-height: calc(96vh - 75px);
+    padding: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .youtube-section {
+    padding: 60px 14px;
+  }
+
+  .youtube-card-body {
+    padding: 15px;
+  }
+
+  .youtube-modal-header {
+    padding: 14px 16px;
+  }
+}
 
   </style>
 
@@ -1161,147 +1509,6 @@
 
     </div>
 
-
-
-    <!-- =================================================
-         FOTO SAAT PENGUNJUNGAN
-         ================================================= -->
-
-    <div class="visit-gallery">
-
-
-      <div class="visit-heading">
-
-        <span class="visit-badge">
-          DOKUMENTASI
-        </span>
-
-        <h3>
-          Foto Saat Pengunjungan
-        </h3>
-
-        <p>
-          Dokumentasi kegiatan dan pengunjungan
-          di lingkungan Daarulhikam.
-        </p>
-
-      </div>
-
-
-
-      <!-- SLIDER -->
-
-      <div class="visit-slider">
-
-
-        <button
-          class="visit-arrow prev"
-          id="visitPrev"
-          aria-label="Foto sebelumnya"
-        >
-
-          <i class="fas fa-chevron-left"></i>
-
-        </button>
-
-
-
-        <div
-          class="visit-track"
-          id="visitTrack"
-        >
-
-
-          <!-- FOTO 1 -->
-
-          <div class="visit-slide active">
-
-            <img
-              src="image3.png"
-              alt="Foto Pengunjungan 1"
-            >
-
-          </div>
-
-
-          <!-- FOTO 2 -->
-
-          <div class="visit-slide">
-
-            <img
-              src="image4.png"
-              alt="Foto Pengunjungan 2"
-            >
-
-          </div>
-
-
-          <!-- FOTO 3 -->
-
-          <div class="visit-slide">
-
-            <img
-              src="image5.png"
-              alt="Foto Pengunjungan 3"
-            >
-
-          </div>
-
-
-          <!-- FOTO 4 -->
-
-          <div class="visit-slide">
-
-            <img
-              src="S13.png"
-              alt="Foto Pengunjungan 4"
-            >
-
-          </div>
-
-
-          <!-- FOTO 5 -->
-
-          <div class="visit-slide">
-
-            <img
-              src="S9.png"
-              alt="Foto Pengunjungan 5"
-            >
-
-          </div>
-
-
-        </div>
-
-
-
-        <button
-          class="visit-arrow next"
-          id="visitNext"
-          aria-label="Foto berikutnya"
-        >
-
-          <i class="fas fa-chevron-right"></i>
-
-        </button>
-
-
-      </div>
-
-
-
-      <!-- DOT -->
-
-      <div
-        class="visit-dots"
-        id="visitDots"
-      >
-      </div>
-
-
-    </div>
-
   </div>
 
 </section>
@@ -1634,6 +1841,169 @@
 
 </section>
 
+
+
+
+<!-- =====================================================
+     YOUTUBE / VIDEO TERBARU
+     DITEMPATKAN TEPAT SEBELUM FOOTER
+     ===================================================== -->
+
+<section class="youtube-section" id="youtube">
+  <div class="container">
+
+    <div class="youtube-heading">
+      <h3>Video Daarulhikam</h3>
+      <p>
+        Saksikan video profil, kegiatan, dan informasi terbaru
+        Daarulhikam langsung dari halaman website.
+      </p>
+    </div>
+
+    <div class="youtube-grid">
+
+      <!-- VIDEO 1 -->
+      <article class="youtube-card youtube-open-video"
+               data-video-id="QqMfC4EAym0"
+               data-video-title="Video Profile Daarulhikam">
+        <div class="youtube-thumb">
+          <img src="https://img.youtube.com/vi/QqMfC4EAym0/hqdefault.jpg"
+               alt="Video Profile Daarulhikam" loading="lazy">
+          <button type="button" class="youtube-play" aria-label="Putar Video Profile Daarulhikam">
+            <i class="fas fa-play"></i>
+          </button>
+        </div>
+        <div class="youtube-card-body">
+          <h4>Video Profile Daarulhikam</h4>
+          <p>Kenali Daarulhikam lebih dekat.</p>
+        </div>
+      </article>
+
+      <!-- VIDEO 2 -->
+      <article class="youtube-card youtube-open-video"
+               data-video-id="j8xHCsc15g0"
+               data-video-title="Kegiatan Santri">
+        <div class="youtube-thumb">
+          <img src="https://img.youtube.com/vi/j8xHCsc15g0/hqdefault.jpg"
+               alt="Kegiatan Santri" loading="lazy">
+          <button type="button" class="youtube-play" aria-label="Putar Kegiatan Santri">
+            <i class="fas fa-play"></i>
+          </button>
+        </div>
+        <div class="youtube-card-body">
+          <h4>Drama Dari para santri</h4>
+          <p>Drama anak durhaka yang di tampilkan para santri</p>
+        </div>
+      </article>
+
+      <!-- VIDEO 3 -->
+      <article class="youtube-card youtube-open-video"
+               data-video-id="24lj3X46Qrk"
+               data-video-title="Aktivitas Pesantren">
+        <div class="youtube-thumb">
+          <img src="https://img.youtube.com/vi/24lj3X46Qrk/hqdefault.jpg"
+               alt="Aktivitas Pesantren" loading="lazy">
+          <button type="button" class="youtube-play" aria-label="Putar Aktivitas Pesantren">
+            <i class="fas fa-play"></i>
+          </button>
+        </div>
+        <div class="youtube-card-body">
+          <h4>Liburan Santri</h4>
+          <p>Rihlah para santri di Hotel Harris</p>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="youtube-actions">
+      <button type="button" class="youtube-more-btn" id="openYoutubeModal">
+        <i class="fab fa-youtube"></i>
+        &nbsp; Lihat Semua Video
+      </button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =====================================================
+     MODAL SEMUA VIDEO YOUTUBE
+     Bisa di-scroll jika jumlah video banyak
+     ===================================================== -->
+
+<div class="youtube-modal" id="youtubeModal" aria-hidden="true">
+  <div class="youtube-modal-box" role="dialog" aria-modal="true"
+       aria-labelledby="youtubeModalTitle">
+
+    <div class="youtube-modal-header">
+      <h3 id="youtubeModalTitle">Semua Video Daarulhikam</h3>
+      <button type="button" class="youtube-close" id="closeYoutubeModal"
+              aria-label="Tutup">
+        &times;
+      </button>
+    </div>
+
+    <div class="youtube-modal-scroll">
+      <div class="youtube-modal-grid">
+
+        <article class="youtube-modal-item">
+          <div class="youtube-modal-frame">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/QqMfC4EAym0?rel=0"
+              title="Video Profile Daarulhikam"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="youtube-modal-info">
+            <h4>Video Profile Daarulhikam</h4>
+            <p>Video profil Daarulhikam.</p>
+          </div>
+        </article>
+
+        <!--
+          TAMBAHKAN VIDEO LAIN DI SINI.
+          Contoh:
+          src="https://www.youtube-nocookie.com/embed/ID_VIDEO?rel=0"
+        -->
+
+        <article class="youtube-modal-item">
+          <div class="youtube-modal-frame">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/VmxsinTeWKxkaTv-"
+              title="Kegiatan Santri"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="youtube-modal-info">
+            <h4>Kegiatan Santri</h4>
+            <p>Dokumentasi kegiatan santri.</p>
+          </div>
+        </article>
+
+        <article class="youtube-modal-item">
+          <div class="youtube-modal-frame">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/GANTI_ID_VIDEO_3?rel=0"
+              title="Aktivitas Pesantren"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="youtube-modal-info">
+            <h4>Aktivitas Pesantren</h4>
+            <p>Suasana dan aktivitas Daarulhikam.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <!-- =====================================================
@@ -2290,6 +2660,79 @@ document.addEventListener(
 
 <script src="coba.js"></script>
 
+
+
+<script>
+/* =====================================================
+   YOUTUBE MODAL
+   ===================================================== */
+document.addEventListener("DOMContentLoaded", function () {
+  const youtubeModal = document.getElementById("youtubeModal");
+  const openYoutubeModal = document.getElementById("openYoutubeModal");
+  const closeYoutubeModal = document.getElementById("closeYoutubeModal");
+  const youtubeCards = document.querySelectorAll(".youtube-open-video");
+
+  function openModal() {
+    youtubeModal.classList.add("show");
+    youtubeModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("youtube-modal-open");
+  }
+
+  function closeModal() {
+    youtubeModal.classList.remove("show");
+    youtubeModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("youtube-modal-open");
+  }
+
+  openYoutubeModal.addEventListener("click", openModal);
+  closeYoutubeModal.addEventListener("click", closeModal);
+
+  youtubeModal.addEventListener("click", function (event) {
+    if (event.target === youtubeModal) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && youtubeModal.classList.contains("show")) {
+      closeModal();
+    }
+  });
+
+  /*
+   * Klik video di bagian utama:
+   * video langsung berubah menjadi player YouTube di tempatnya.
+   * Tidak membuka modal.
+   */
+  youtubeCards.forEach(function (card) {
+    card.addEventListener("click", function (event) {
+      const videoId = card.dataset.videoId;
+      if (!videoId || videoId.startsWith("GANTI_")) return;
+
+      // Jangan membuat player kedua jika sudah pernah dibuka.
+      if (card.classList.contains("is-playing")) return;
+
+      const thumb = card.querySelector(".youtube-thumb");
+      if (!thumb) return;
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      const iframe = document.createElement("iframe");
+      iframe.src = "https://www.youtube-nocookie.com/embed/" + videoId + "?autoplay=1&rel=0";
+      iframe.title = card.dataset.videoTitle || "Video Daarulhikam";
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.allowFullscreen = true;
+      iframe.loading = "eager";
+      iframe.style.cssText = "position:absolute;inset:0;width:100%;height:100%;border:0;";
+
+      thumb.innerHTML = "";
+      thumb.appendChild(iframe);
+      card.classList.add("is-playing");
+    });
+  });
+});
+</script>
 
 </body>
 
