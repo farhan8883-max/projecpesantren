@@ -701,7 +701,133 @@ body.youtube-modal-open {
     padding: 14px 16px;
   }
 }
+/* FLOATING WHATSAPP */
+.whatsapp-float {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 99990;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  background: #25D366;
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+  font-size: 34px;
+  text-decoration: none;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.whatsapp-float:hover {
+  color: #fff;
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(0,0,0,.3);
+}
+.whatsapp-float:focus-visible { outline: 3px solid #128C7E; outline-offset: 4px; }
+@media (max-width: 480px) {
+  .whatsapp-float { width: 54px; height: 54px; right: 15px; bottom: 15px; font-size: 30px; }
+}
 
+
+@media (max-width: 480px) {
+
+  .youtube-section {
+
+    padding: 60px 14px;
+
+  }
+
+  .youtube-card-body {
+
+    padding: 15px;
+
+  }
+
+  .youtube-modal-header {
+
+    padding: 14px 16px;
+
+  }
+
+}
+
+/* YOUTUBE CARD HORIZONTAL SLIDER */
+.youtube-grid {
+  display: flex;
+  gap: 18px;
+  max-width: 1180px;
+  margin: 0 auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 8px 4px 20px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #ff0000 rgba(255,255,255,.12);
+}
+.youtube-grid::-webkit-scrollbar { height: 7px; }
+.youtube-grid::-webkit-scrollbar-track { background: rgba(255,255,255,.12); border-radius: 20px; }
+.youtube-grid::-webkit-scrollbar-thumb { background: #ff0000; border-radius: 20px; }
+.youtube-grid .youtube-card {
+  flex: 0 0 calc((100% - 36px) / 3);
+  min-width: 260px;
+  scroll-snap-align: start;
+}
+@media (max-width: 850px) {
+  .youtube-grid { gap: 14px; }
+  .youtube-grid .youtube-card { flex-basis: min(78%, 340px); min-width: 230px; }
+}
+@media (max-width: 480px) {
+  .youtube-grid .youtube-card { flex-basis: 82%; min-width: 0; }
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.card {
+    padding: 20px;
+    text-align: center;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .cards {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .card {
+        padding: 12px 8px;
+    }
+}
+
+/* HP kecil */
+@media (max-width: 480px) {
+    .cards {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .card h4 {
+        font-size: 13px;
+    }
+
+    .card p {
+        font-size: 11px;
+    }
+
+    .card i {
+        font-size: 20px;
+    }
+}sssss
   </style>
 
 </head>
@@ -1971,7 +2097,23 @@ body.youtube-modal-open {
         <article class="youtube-modal-item">
           <div class="youtube-modal-frame">
             <iframe
-              src="https://www.youtube-nocookie.com/embed/VmxsinTeWKxkaTv-"
+              src="https://www.youtube-nocookie.com/embed/lKXE0D8chto?rel=0"
+              title="Husnul Khotimah"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="youtube-modal-info">
+            <h4>Kegiatan Santri</h4>
+            <p>Dokumentasi kegiatan santri.</p>
+          </div>
+        </article>
+
+        <article class="youtube-modal-item">
+          <div class="youtube-modal-frame">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/VmxsinTeWKxkaTv"
               title="Kegiatan Santri"
               loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -2119,6 +2261,15 @@ body.youtube-modal-open {
 </footer>
 
 
+
+<!-- Tombol WhatsApp melayang: ganti nomor contoh dengan nomor admin format internasional tanpa tanda + atau spasi -->
+<a class="whatsapp-float"
+   href="https://wa.me/6281234567890?text=Assalamualaikum%2C%20saya%20ingin%20bertanya%20tentang%20Daarulhikam."
+   target="_blank" rel="noopener noreferrer"
+   aria-label="Hubungi Daarulhikam melalui WhatsApp"
+   title="Chat WhatsApp">
+  <i class="fab fa-whatsapp" aria-hidden="true"></i>
+</a>
 
 <!-- =====================================================
      JAVASCRIPT
