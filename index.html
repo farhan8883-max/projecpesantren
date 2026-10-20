@@ -828,6 +828,49 @@ body.youtube-modal-open {
         font-size: 20px;
     }
 }sssss
+
+/* KARTU FOTO HORIZONTAL */
+.story-section {
+  padding: 55px 0;
+}
+.story-heading { text-align:center; margin-bottom:26px; }
+.story-heading h3 { font-size:clamp(25px,4vw,38px); margin:0 0 10px; }
+.story-heading p { max-width:680px; margin:0 auto; opacity:.8; }
+.story-slider-wrap { position:relative; max-width:1180px; margin:0 auto; }
+.story-slider {
+  display:flex; gap:20px; overflow-x:auto; padding:8px 5px 20px;
+  scroll-snap-type:x mandatory; scroll-behavior:smooth;
+  -webkit-overflow-scrolling:touch; scrollbar-width:thin;
+}
+.story-card {
+  flex:0 0 calc((100% - 40px) / 3); min-width:250px;
+  overflow:hidden; border-radius:20px;
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 12px 30px rgba(0,0,0,.12);
+  scroll-snap-align:start; transition:transform .25s ease, box-shadow .25s ease;
+}
+.story-card:hover { transform:translateY(-5px); box-shadow:0 18px 36px rgba(0,0,0,.18); }
+/* Rasio tetap agar foto proporsional dan tidak gepeng */
+.story-card-image { width:100%; aspect-ratio:4 / 3; overflow:hidden; background:#e9e9e9; }
+.story-card-image img { display:block; width:100%; height:100%; object-fit:cover; object-position:center; }
+.story-card-content { padding:20px; }
+.story-card-content .story-tag { display:inline-block; font-size:11px; font-weight:700; letter-spacing:.7px; padding:5px 10px; border-radius:20px; margin-bottom:9px; }
+.story-card-content h4 { margin:0 0 9px; font-size:19px; }
+.story-card-content p { margin:0; line-height:1.7; font-size:14px; opacity:.82; }
+.story-controls { display:flex; justify-content:center; align-items:center; gap:12px; margin-top:12px; }
+.story-arrow { width:42px; height:42px; border:0; border-radius:50%; cursor:pointer; font-size:17px; background:#176b48; color:white; transition:transform .2s ease; }
+.story-arrow:hover { transform:scale(1.08); }
+.story-hint { font-size:12px; opacity:.7; }
+@media(max-width:850px) { .story-card { flex-basis:min(78%,340px); } }
+@media(max-width:480px) {
+  .story-section { padding:38px 0; }
+  .story-slider { gap:13px; }
+  .story-card { flex-basis:84%; min-width:0; }
+  .story-card-content { padding:16px; }
+  .story-card-content h4 { font-size:17px; }
+}
+
   </style>
 
 </head>
@@ -1026,7 +1069,6 @@ body.youtube-modal-open {
 <br>
 
 
-
 <!-- =====================================================
      ABOUT
      ===================================================== -->
@@ -1189,6 +1231,7 @@ body.youtube-modal-open {
   </div>
 
 </section>
+
 
 
 
@@ -1872,6 +1915,76 @@ body.youtube-modal-open {
 
 </section>
 
+
+
+<!-- KARTU FOTO YANG BISA DIGESER -->
+<section class="story-section" id="cerita-daarulhikam">
+  <div class="container">
+    <div class="story-heading">
+      <h3>Informasi Daarulhikam</h3>
+      <p>Tokoh Penting dan Ulama yang pernah mengunjungi Daarulhikam dan juga informasi lainnya</p>
+    </div>
+    <div class="story-slider-wrap">
+      <div class="story-slider" id="storySlider" aria-label="Kartu foto Daarulhikam">
+        <article class="story-card">
+          <div class="story-card-image"><img src="Kunjungan.jpeg" alt="Ruang kelas Daarulhikam" loading="lazy"></div>
+          <div class="story-card-content">
+            <span class="story-tag">Habib Muhammad syahab</span>
+            <h4>Kunjungan Habib Muhammad syahab</h4>
+            <p>Kunjungan Habib Muhammad syahab ke Pondok Pesantren Daarulhikam Untuk mengikat tali silaturahmi</p>
+          </div>
+        </article>
+        <article class="story-card">
+          <div class="story-card-image"><img src="Kunjungan2.jpeg" alt="Kamar asrama santri" loading="lazy"></div>
+          <div class="story-card-content">
+            <span class="story-tag"></span>
+            <h4>kunjungan ketua MPR RI ( H. Ahmad Muzani )</h4>
+            <p>kunjungan ketua MPR RI ( H. Ahmad Muzani ) ke Pondok Pesantren Daarulhikam Bersama Anggota DPR RI Dapil Kepri ( H.M. Endipat Wijaya )</p>
+          </div>
+        </article>
+        <article class="story-card">
+          <div class="story-card-image"><img src="Kunjungan3.jpeg" alt="Musala Daarulhikam" loading="lazy"></div>
+          <div class="story-card-content">
+            <span class="story-tag">Wakil Menteri</span>
+            <h4>Bersama Wakil Menteri Haji Dan Umrah</h4>
+            <p>Foto Pimpinan Pondok Pesantren dengan Wakil Menteri Haji Dan Umrah Republik Indonesia</p>
+          </div>
+        </article>
+        <article class="story-card">
+          <div class="story-card-image"><img src="Kunjungan4.jpeg" alt="Area luar dan lapangan" loading="lazy"></div>
+          <div class="story-card-content">
+            <span class="story-tag">Kapolda Kepulauan Riau</span>
+            <h4>Kunjungan Kabareskrim Polri</h4>
+            <p>Kunjungan Kabareskrim Polri, pada saat itu masih menjabat menjadi Kapolda Kepulauan Riau (Irjen Pol. Asep Safrudin S.I.K., M.H).</</p>
+          </div>
+        </article>
+        <article class="story-card">
+          <div class="story-card-image"><img src="Kunjungan5.jpeg" alt="Kantor Daarulhikam" loading="lazy"></div>
+          <div class="story-card-content">
+            <span class="story-tag"></span>
+            <h4>Wakil Ketua Dewan Pimpinan MUI ( K.H M. Cholil Nafis, Ph.D )</h4>
+            <p>Foto Pimpinan Pondok Pesantren dengan Wakil Ketua Dewan Pimpinan MUI ( K.H M. Cholil Nafis, Ph.D )</p>
+          </div>
+        </article>
+        <!-- <article class="story-card">
+          <div class="story-card-image"><img src="image4.png" alt="Kegiatan dan lingkungan santri" loading="lazy"></div>
+          <div class="story-card-content">
+            <span class="story-tag">PEMBINAAN</span>
+            <h4>Pembinaan Santri</h4>
+            <p>Pendidikan yang memadukan pembelajaran, pembiasaan adab, dan pembentukan karakter.</p>
+          </div>
+        </article> -->
+      </div>
+      <div class="story-controls">
+        <button class="story-arrow" type="button" id="storyPrev" aria-label="Kartu sebelumnya"><i class="fas fa-chevron-left"></i></button>
+        <span class="story-hint">Geser atau tekan panah</span>
+        <button class="story-arrow" type="button" id="storyNext" aria-label="Kartu berikutnya"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+<br>
 
 
 <!-- =====================================================
@@ -2881,6 +2994,31 @@ document.addEventListener("DOMContentLoaded", function () {
       thumb.appendChild(iframe);
       card.classList.add("is-playing");
     });
+  });
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const slider = document.getElementById("storySlider");
+  const prev = document.getElementById("storyPrev");
+  const next = document.getElementById("storyNext");
+  if (!slider || !prev || !next) return;
+
+  function scrollCards(direction) {
+    const card = slider.querySelector(".story-card");
+    if (!card) return;
+    const gap = parseFloat(getComputedStyle(slider).gap) || 0;
+    slider.scrollBy({ left: direction * (card.getBoundingClientRect().width + gap), behavior: "smooth" });
+  }
+  prev.addEventListener("click", () => scrollCards(-1));
+  next.addEventListener("click", () => {
+    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 5) {
+      slider.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      scrollCards(1);
+    }
   });
 });
 </script>
