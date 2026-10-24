@@ -175,6 +175,38 @@ body {
   background: var(--blue-dark);
 }
 
+/* Tombol lihat dan download brosur */
+.brochure-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+
+.zoom-button,
+.download-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+  padding: 12px 10px;
+  border: 0;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.zoom-button { background: var(--blue); }
+.zoom-button:hover { background: var(--blue-dark); }
+.download-button { background: #13804a; }
+.download-button:hover { background: #0c6539; }
+
 /* Footer */
 .footer {
   text-align: center;
@@ -312,7 +344,7 @@ body {
 <!-- Navigasi atas -->
 <nav class="navbar">
   <div class="nav-inner">
-    <div class="brand">BlueGallery</div>
+    <div class="brand">Brosur</div>
 
     <!-- Ganti form-awal.html sesuai nama halaman awal kamu -->
     <a class="back-button" href="index.html">
@@ -324,7 +356,7 @@ body {
 <main class="container">
 
   <header class="header">
-    <div class="label">GALERI DOKUMEN</div>
+    <div class="label"> Informasi Terkait Daarulhikam Di bawah</div>
     <h1>Galeri Brosur</h1>
     <p>
       Silakan pilih brosur untuk melihat gambar dengan lebih jelas.
@@ -344,11 +376,16 @@ body {
       <div class="info">
         <h2>Brosur 1</h2>
         <p>Lihat informasi pada brosur pertama.</p>
-        <button class="zoom-button"
-                data-image="brosur.jpeg"
-                data-title="Brosur 1">
-          ⌕ &nbsp; Lihat Brosur
-        </button>
+        <div class="brochure-actions">
+          <button class="zoom-button"
+                  data-image="brosur.jpeg"
+                  data-title="Brosur 1">
+            ⌕ &nbsp; Lihat Brosur
+          </button>
+          <a class="download-button" href="brosur.jpeg" download="Brosur-Daarulhikam-1.jpeg">
+            ⬇ &nbsp; Download Brosur
+          </a>
+        </div>
       </div>
     </article>
 
@@ -362,11 +399,16 @@ body {
       <div class="info">
         <h2>Brosur 2</h2>
         <p>Lihat informasi pada brosur kedua.</p>
-        <button class="zoom-button"
-                data-image="2_20261023_120301_0001.png"
-                data-title="Brosur 2">
-          ⌕ &nbsp; Lihat Brosur
-        </button>
+        <div class="brochure-actions">
+          <button class="zoom-button"
+                  data-image="2_20261023_120301_0001.png"
+                  data-title="Brosur 2">
+            ⌕ &nbsp; Lihat Brosur
+          </button>
+          <a class="download-button" href="2_20261023_120301_0001.png" download="Brosur-Daarulhikam-2.png">
+            ⬇ &nbsp; Download Brosur
+          </a>
+        </div>
       </div>
     </article>
 
